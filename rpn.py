@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
 
+import operator
+
+operators = {
+ '+': operator.add,
+ '-': operator.sub,
+ '*': operator.mul,
+ '/': operator.truediv,
+ '^': operator.pow,
+}
+
 def calculate(arg):
  stack = list()
  for token in arg.split():
@@ -7,9 +17,10 @@ def calculate(arg):
    value = int(token)
    stack.append(value)
   except ValueError:
-   arg1 = stack.pop()
+   function = operators[token]
    arg2 = stack.pop()
-   return arg1 + arg2
+   arg1 = stack.pop()
+   return function(arg1, arg2)
 
 def main():
  while True:
