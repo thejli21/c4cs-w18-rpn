@@ -1,5 +1,5 @@
 import unittest
-import rpm
+import rpn
 
 class TestBasics(unittest.TestCase):
 	def test_add(self):
